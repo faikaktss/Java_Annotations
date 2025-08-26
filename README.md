@@ -22,15 +22,20 @@ Bu projede Reflection, aşağıdaki amaçlarla kullanılmıştır:
 Bu sayede, programın dinamik olarak farklı durumlara uyum sağlaması hedeflenmiştir.
 
 🗂️ Proje Akışı: Adım Adım
-Sınıfa Anotasyon Ekleme: AnnotationInvoker sınıfının üzerine @DatabaseConf anotasyonu eklenir ve veritabanı bilgileri buraya yazılır.
+1. Sınıfa Anotasyon Ekleme
+AnnotationInvoker sınıfının üzerine @DatabaseConf anotasyonu eklenir ve veritabanı bilgileri buraya yazılır.
 
-Anotasyonu Okuma: Program başladığında, Reflection API kullanılarak bu anotasyon bulunur ve içerisindeki veritabanı bilgileri ekrana yazdırılır. Bu, kodun içine sabitlenmiş veriler yerine, dışarıdan okunabilen bir konfigürasyon yapısı oluşturur.
+2. Anotasyonu Okuma
+Program başladığında, Reflection API kullanılarak bu anotasyon bulunur ve içerisindeki veritabanı bilgileri ekrana yazdırılır. Bu, kodun içine sabitlenmiş veriler yerine, dışarıdan okunabilen bir konfigürasyon yapısı oluşturur.
 
-Metoda Anotasyon Ekleme: write metodunun üzerine @Birim anotasyonu eklenir. Bu anotasyon, boy ve kilo değerlerinin hangi birimlerle (örneğin, metre ve kilogram) gösterileceğini belirtir.
+3. Metoda Anotasyon Ekleme
+write metodunun üzerine @Birim anotasyonu eklenir. Bu anotasyon, boy ve kilo değerlerinin hangi birimlerle (örneğin, metre ve kilogram) gösterileceğini belirtir.
 
-Kullanıcı Etkileşimi: Kullanıcıdan boy ve kilo değerleri alınır.
+4. Kullanıcı Etkileşimi
+Kullanıcıdan boy ve kilo değerleri alınır.
 
-Sonuçların Sunulması: Reflection, write metodundaki @Birim anotasyonunu okur ve kullanıcıdan alınan değerleri, anotasyonda belirtilen birimlerle birlikte ekrana basar.
+5. Sonuçların Sunulması
+Reflection, write metodundaki @Birim anotasyonunu okur ve kullanıcıdan alınan değerleri, anotasyonda belirtilen birimlerle birlikte ekrana basar.
 
 💡 Örnek Kullanım:
 Kullanıcı 1.80 ve 75 değerlerini girdiğinde:
