@@ -47,6 +47,7 @@ Kilo: 75 KG
 
 ✅ Anotasyonların sadece hazır kütüphanelerde değil, kendi projelerimizde de nasıl kullanılabileceğini göstermek
 
+
 ✅ Reflection'ın, programın çalışma zamanı davranışını nasıl dinamik olarak şekillendirebileceğini kanıtlamak
 
 ✅ Yönetilebilir ve okunaklı kod yazma pratiğini güçlendirmek
