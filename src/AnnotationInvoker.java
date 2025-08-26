@@ -1,3 +1,5 @@
+import java.lang.reflect.Method;
+
 @Databaseconf(url = "http://faikaktas.com",username = "faik",password = "123",port = 3000)
 public class AnnotationInvoker {
 	public void write() {
@@ -13,10 +15,13 @@ public class AnnotationInvoker {
 	
 	@Birim(boy = "M", kilo = "KG")
 	public void write(double boy, double kilo) {
-		Birim annotation = this.getClass().getAnnotation(Birim.class);
-		if(annotation!= null) {
-			System.out.println("BOY: "+ boy +" "+ annotation.boy());
-			System.out.println("KİLO: "+ kilo + "" + annotation.kilo());
+		Method[] methods = this.getClass().getMethods();
+		for (Method method : methods) {
+			Birim annotation = method.getAnnotation(Birim.class);
+			if(annotation!=null) {
+				System.out.println("BOY 	:" + boy + " " + annotation.boy());
+				System.out.println("KİLO    :" + kilo+ " " + annotation.kilo());
+			}
 		}
 	}
 }
