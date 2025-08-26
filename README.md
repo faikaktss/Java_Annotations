@@ -1,79 +1,79 @@
-🎓 Proje Sunumu: Java Annotations & Reflection Demo
+🎓 Proje Sunumu: Java Annotations & Reflection Demoları
+Bu proje, Java dilinde özel anotasyonlar (custom annotations) oluşturmayı ve bu anotasyonları reflection mekanizması aracılığıyla çalışma zamanında okumayı hedefleyen bir örnek uygulamadır.
+
 🏷️ Anotasyon (Annotation) Nedir?
+Java'da anotasyonlar, sınıflara, metotlara veya değişkenlere eklenebilen, bir tür etiket (metadata) görevi gören yapılardır.
 
-Java’da anotasyonlar, sınıflara, metotlara veya değişkenlere eklenebilen, bir tür etiket (metadata) görevi gören yapılardır:
+Kodun kendisine ek bilgi sağlarlar.
 
-📌 Kodun kendisine ek bilgi sağlar.
+Derleyici (compiler) veya çalışma zamanı (runtime) tarafından yorumlanabilirler.
 
-📌 Compiler veya çalışma zamanı tarafından yorumlanabilir.
+Çoğu zaman framework'lerde, konfigürasyonlarda ve kütüphane kullanımında karşımıza çıkarlar.
 
-📌 Çoğu zaman framework’lerde ve kütüphane kullanımında karşımıza çıkar.
+Bu projede, iki farklı özel anotasyon tanımlanmıştır:
 
-➡️ Bu projede iki adet özel anotasyon tanımlandı:
+@Databaseconf: Veritabanı bağlantı bilgilerini saklamak için.
 
-@Databaseconf → Veritabanı bağlantı bilgilerini saklar.
-
-@Birim → Kullanıcının boy ve kilosuna birim ekler.
+@Birim: Kullanıcının boy ve kilosuna birim eklemek için.
 
 🔎 Reflection Nedir?
+Reflection, Java'da çalışma zamanında bir sınıfın yapısını inceleyebilme ve değiştirebilme imkanı sunan güçlü bir özelliktir.
 
-Reflection, Java’da çalışma zamanında bir sınıfın yapısını inceleme ve yönetme imkanı sunar:
+Bir sınıfın sahip olduğu metotları, anotasyonları ve alanları (fields) öğrenebiliriz.
 
-🔍 Sınıfın metotlarını, alanlarını ve anotasyonlarını öğrenebiliriz.
+Normalde derleme anında bilmediğimiz bilgilere, program çalışırken erişebiliriz.
 
-🔍 Normalde derleme anında bilmediğimiz bilgilere, program çalışırken erişebiliriz.
+Bu projede Reflection, aşağıdaki amaçlarla kullanılmıştır:
 
-➡️ Bu projede Reflection:
+Sınıfa eklenen @Databaseconf anotasyonunu çekmek.
 
-@Databaseconf anotasyonunu sınıftan okumak,
+Metotlara eklenen @Birim anotasyonunu bulmak.
 
-@Birim anotasyonunu metodun üzerinden çekmek,
-
-Ve bunları kullanıcıya göstermek için kullanılmıştır.
+Bu bilgileri kullanıcıya sunmak.
 
 🗂️ Projenin Akışı
+✨ 1. Sınıfa Anotasyon Ekleme
+AnnotationInvoker adlı sınıfın üzerine @Databaseconf anotasyonu yerleştirilir. Bu anotasyonun içinde, veritabanı bağlantısına dair bilgiler (URL, kullanıcı adı, şifre, port) tanımlıdır.
 
-✨ Sınıfa Anotasyon Ekleme
-→ AnnotationInvoker sınıfının başına @Databaseconf anotasyonu yazılır.
+🔍 2. Anotasyonu Okuma
+Program çalıştığında, Reflection kullanılarak bu anotasyon bulunur. Eğer anotasyon mevcutsa, içindeki bilgiler ekrana yazdırılır. Böylece kodun içine gömülmüş değil, anotasyon üzerinden gelen bilgiler görüntülenmiş olur.
 
-🔍 Anotasyonu Okuma
-→ Reflection kullanılarak sınıf üzerindeki bu anotasyon bulunur, bilgiler ekrana yazdırılır.
+⚖️ 3. Metoda Anotasyon Ekleme
+write adında başka bir metoda @Birim anotasyonu eklenmiştir. Bu anotasyon, boy ve kilo için hangi birimlerin kullanılacağını belirtir (örneğin, boy → metre, kilo → kilogram).
 
-⚖️ Metoda Anotasyon Ekleme
-→ write metoduna @Birim anotasyonu eklenir (örneğin: Boy → Metre, Kilo → Kilogram).
+🧑‍💻 4. Kullanıcı Etkileşimi
+Program çalıştırıldığında kullanıcıdan boy ve kilo değerleri istenir. Bu değerler alındıktan sonra, write metodu çağrılır.
 
-🧑‍💻 Kullanıcı Etkileşimi
-→ Program kullanıcıdan boy ve kilo bilgilerini alır.
+📊 5. Sonuçların Sunulması
+Reflection ile metodun üzerindeki @Birim anotasyonu okunur ve kullanıcının girdiği değerler, anotasyondan gelen birimlerle birlikte ekrana yazdırılır.
 
-📊 Sonuçların Sunulması
-→ Kullanıcının girdiği değerler, @Birim anotasyonundan gelen birimlerle birlikte ekrana yazdırılır.
+Örneğin, kullanıcı 1.80 ve 75 girdiğinde ekrana “Boy: 1.8 M” ve “Kilo: 75 KG” yazılır.
 
 🛠️ Kullanılan Java Özellikleri
+Java Annotations: Özel anotasyonlar oluşturma.
 
-☕ Custom Annotations (özel anotasyonlar oluşturma)
+Reflection API: Çalışma zamanında metadata okuma.
 
-🔎 Reflection API (çalışma zamanında metadata okuma)
+Scanner: Kullanıcı girdisi alma.
 
-⌨️ Scanner (kullanıcıdan veri alma)
-
-📡 Retention & Target (anotasyonların yaşam süresi ve nerede kullanılacağını belirleme)
+Retention & Target: Anotasyonların nerede kullanılacağını ve ne zamana kadar erişilebilir olacağını belirleme.
 
 🎯 Projenin Amacı
+Bu projenin temel amacı, klasik programlama yaklaşımının ötesine geçerek Java’nın metaprogramming yeteneklerini göstermektir.
 
-Bu proje, klasik programlama yaklaşımının ötesine geçerek Java’nın metaprogramming yeteneklerini göstermeyi amaçlar:
+Kullanıcıya, anotasyonların sadece framework'lerde veya hazır kütüphanelerde değil, kendi projelerimizde de nasıl kullanılabileceğini öğretmek.
 
-🏷️ Anotasyonların nasıl tanımlanıp kullanılabileceğini öğrenmek,
+Reflection kavramının, çalışma zamanında bilgileri nasıl dinamik hale getirdiğini örneklemek.
 
-🔎 Reflection ile çalışma zamanında bilgiye erişimi deneyimlemek,
-
-👨‍💻 Kullanıcı etkileşimi ile konuyu daha somut hale getirmek.
+Soyut kalabilecek bir konuyu, somut ve anlaşılır bir örnek ile öğrenilebilir hale getirmek.
 
 🌟 Sonuç
+Bu proje, Java'da anotasyon ve reflection kavramlarını öğrenmek isteyenler için küçük ama etkili bir örnektir.
 
-📌 Bu proje küçük ama güçlü bir örnek olarak, Java Annotations ve Reflection konularını kavramanı kolaylaştırır.
+🏷️ Anotasyonlar sayesinde kod daha açıklayıcı ve yönetilebilir hale gelmiştir.
 
-Kodun esnekliğini ve okunabilirliğini artırır.
+🔎 Reflection sayesinde, çalışma anında ek bilgiler okunarak dinamik bir davranış sağlanmıştır.
 
-Çalışma zamanında dinamik bilgi erişimi sağlar.
+👨‍💻 Kullanıcı etkileşimi ile konunun pratik tarafı güçlendirilmiştir.
 
-Eğitim amaçlı çok iyi bir referans niteliği taşır.
+Kısacası, bu proje Java'nın güçlü soyutlama araçlarından biri olan anotasyonların, çalışma zamanında reflection ile nasıl kullanılabileceğini gözler önüne serer.
